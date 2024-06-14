@@ -2,13 +2,21 @@ import mongoose from "mongoose";
 
 const notesSchema = new mongoose.Schema(
   {
-    user: {
+    title: {
       type: String,
       required: true,
     },
-    note: {
+    content: {
       type: String,
       required: true,
+    },
+    isPinned: {
+      type: Boolean,
+      default: false,
+    },
+    createdOn: {
+      type: Date,
+      default: new Date().getTime(),
     },
   },
   { timestamps: true }
