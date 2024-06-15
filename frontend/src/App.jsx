@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="font-inter sm:mx-1 mx-2 p-2 lg:p-4">
+    <div className="font-inter p-1 lg:p-3">
       <Home />
       <Toaster position="bottom-left" reverseOrder={true} />
     </div>

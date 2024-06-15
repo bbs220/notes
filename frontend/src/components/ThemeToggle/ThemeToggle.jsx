@@ -31,8 +31,8 @@ const ThemeToggle = () => {
           checked={theme === "bumblebee"}
           onChange={handleToggle}
         />
-        <IoSunnyOutline className="swap-off size-8 text-yellow-500" />
-        <IoMoonOutline className="swap-on size-8 text-slate-500" />
+        <IoSunnyOutline className="swap-off size-6 lg:size-8 text-yellow-500" />
+        <IoMoonOutline className="swap-on size-6 lg:size-8 text-slate-500" />
       </label>
     </div>
   );
