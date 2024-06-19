@@ -1,6 +1,24 @@
+import { useState } from "react";
+import { MdNoteAdd } from "react-icons/md";
+import Modal from "../Modal";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  // Function to handle clicks outside the modal
+  const closeModalOnOutsideClick = (e) => {
+    if (e.target.closest(".modal-content") === null) {
+      setIsModalOpen(false);
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  };
+
   return (
     <div>
       <div className="navbar">
@@ -15,9 +33,19 @@ const Navbar = () => {
             Notes
           </a>
         </div>
+        <button className="btn mr-2 lg:mr-6" onClick={toggleModal}>
+          <MdNoteAdd className="text-2xl" />
+          <p className="hidden md:inline">Add Note</p>
+        </button>
         <div className="flex-none">
           <ThemeToggle />
         </div>
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <div
+            className="modal-content"
+            onClick={closeModalOnOutsideClick}
+          ></div>
+        </Modal>
       </div>
     </div>
   );
