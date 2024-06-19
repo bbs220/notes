@@ -16,16 +16,15 @@ app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:5173",
-    allowedHeaders: ["Content-Type", "application/json"],
   })
 );
 
 app.use("/api", router);
 
 // dummy response better delete this later
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "✨ API is alive" });
-});
+// app.get("/", (req, res) => {
+//   res.status(200).json({ message: "✨ API is alive" });
+// });
 
 // // always keep the static and wildcard last in route so it doesn't interfere with other routes
 // app.use(express.static(path.join(__dirname, "/frontend/dist")));
