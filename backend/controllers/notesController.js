@@ -2,23 +2,30 @@ import notesModel from "../models/notesModel.js";
 
 // for creating a note
 export const createNote = async (req, res) => {
+  const title = req.body.title;
+
+  const content = req.body.content;
+
   try {
-    if (!req.body.title || !req.body.content) {
+    if (!title || !content) {
+      console.log("Need both title and content for creating a note");
       return res.status(400).json({
         message: "Need both title and content for creating a note",
       });
     }
 
     const newNote = {
-      title: req.body.title,
-      content: req.body.content,
+      title: title,
+      content: content,
     };
 
-    const note = await notesModel.create(newNote);
+    if (newNote) {
+      const note = await notesModel.create(newNote);
 
-    console.log("New note created");
+      console.log("New note created");
 
-    return res.status(200).json(note);
+      return res.status(200).json(note);
+    }
   } catch (error) {
     console.log("Error occured : ", error);
 
@@ -31,12 +38,19 @@ export const getAllNotes = async (req, res) => {
   try {
     const allNotes = await notesModel.find({});
 
-    console.log("Heres all the notes");
+    if (allNotes.length === 0) {
+      console.log("There are no Notes in the db");
+      return res.status(200).json({ message: "There are no Notes here" });
+    }
 
-    return res.status(200).json({
-      count: allNotes.length,
-      data: allNotes,
-    });
+    if (allNotes) {
+      console.log("Heres all the notes");
+
+      return res.status(200).json({
+        count: allNotes.length,
+        data: allNotes,
+      });
+    }
   } catch (error) {
     console.log("Error occured : ", error);
 
@@ -51,9 +65,16 @@ export const getNoteWithId = async (req, res) => {
 
     const noteId = await notesModel.findById(id);
 
-    console.log("Found the Note");
+    if (!noteId) {
+      console.log("Note not found with id");
+      return res.status(404).json({ message: "Note not found" });
+    }
 
-    return res.status(200).json(noteId);
+    if (noteId) {
+      console.log("Found the Note");
+
+      return res.status(200).json(noteId);
+    }
   } catch (error) {
     console.log("Error occured : ", error);
 
@@ -66,15 +87,18 @@ export const updateNoteWithId = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const result = await notesModel.findByIdAndUpdate(id, req.body);
+    const resultUpdate = await notesModel.findByIdAndUpdate(id, req.body);
 
-    if (!result) {
+    if (!resultUpdate) {
+      console.log("Note not found for updating");
       res.status(404).json({ message: "Note not found" });
     }
 
-    console.log("Note updated successfully");
+    if (resultUpdate) {
+      console.log("Note updated successfully");
 
-    return res.status(200).json({ message: "Note updated successfully" });
+      return res.status(200).json({ message: "Note updated successfully" });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
 
@@ -87,15 +111,18 @@ export const deleteNoteWithId = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const result = await notesModel.findByIdAndDelete(id);
+    const resultDelete = await notesModel.findByIdAndDelete(id);
 
-    if (!result) {
+    if (!resultDelete) {
+      console.log("Note not found for deletion");
       return res.status(404).json({ message: "Note not found" });
     }
 
-    console.log("Note deleted successfully");
+    if (resultDelete) {
+      console.log("Note deleted successfully");
 
-    return res.status(200).json({ message: "Note deleted successfully" });
+      return res.status(200).json({ message: "Note deleted successfully" });
+    }
   } catch (error) {
     console.log("Error occured : ", error);
 
