@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectToDB from "./database/connectToDatabase.js";
+import router from "./routes/notesRoutes.js";
 dotenv.config();
 
 // local port
@@ -18,6 +19,8 @@ app.use(
     allowedHeaders: ["Content-Type", "application/json"],
   })
 );
+
+app.use("/api", router);
 
 // dummy response better delete this later
 app.get("/", (req, res) => {
