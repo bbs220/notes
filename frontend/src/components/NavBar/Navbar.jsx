@@ -1,5 +1,3 @@
-import AddNote from "../Buttons/AddNote";
-import Modal from "../Modal";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
@@ -17,14 +15,10 @@ const Navbar = () => {
             Notes
           </a>
         </div>
-        <div className="flex-none mr-4 lg:mr-6">
-          <AddNote />
-        </div>
         <div className="flex-none">
           <ThemeToggle />
         </div>
       </div>
-      <Modal/>
     </div>
   );
 };

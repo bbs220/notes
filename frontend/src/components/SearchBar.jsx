@@ -6,9 +6,9 @@ const SearchBar = () => {
       <input
         type="text"
         placeholder="Search notes..."
-        className="input input-bordered input-primary w-full lg:w-1/2 "
+        className="input input-bordered input-info w-full lg:w-1/2 "
       />
-      <button className="btn">
+      <button className="btn btn-info">
         <IoSearch className="text-xl" />
       </button>
     </div>
