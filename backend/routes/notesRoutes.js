@@ -4,6 +4,7 @@ import {
   deleteNoteWithId,
   getAllNotes,
   getNoteWithId,
+  searchNotes,
   updateNoteWithId,
 } from "../controllers/notesController.js";
 
@@ -18,5 +19,7 @@ router.get("/notes/:id", getNoteWithId);
 router.put("/notes/:id", updateNoteWithId);
 
 router.delete("/notes/:id", deleteNoteWithId);
+
+router.get("/notes/search", searchNotes);
 
 export default router;

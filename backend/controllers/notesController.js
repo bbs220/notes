@@ -129,3 +129,36 @@ export const deleteNoteWithId = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// for searching a certain note
+export const searchNotes = async (req, res) => {
+  try {
+    const { title } = req.query;
+
+    if (!title) {
+      console.log("Need a title for searching notes");
+      return res
+        .status(400)
+        .json({ message: "Need a title for searching notes" });
+    }
+
+    if (title.length < 3) {
+      console.log("Title must be at least 3 characters");
+      return res
+        .status(400)
+        .json({ message: "Title must be at least 3 characters" });
+    }
+
+    if (title) {
+      const searchGivenNote = await notesModel.find({
+        title: { $regex: new RegExp(title, "i") },
+      });
+
+      res.status(200).json(searchGivenNote);
+    }
+  } catch (error) {
+    console.error("Failed to search notes : ", error);
+
+    res.status(500).json({ message: "Failed to search quotes" });
+  }
+};
