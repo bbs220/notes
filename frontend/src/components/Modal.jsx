@@ -30,7 +30,7 @@ const Modal = ({ onClose }) => {
         toast.error("Failed to create note.");
       }
     } catch (error) {
-      console.error("Error creating note:", error);
+      // console.error("Error creating note:", error);
 
       toast.error("An error occurred. Please try again.");
     }
