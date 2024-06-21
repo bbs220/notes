@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AddNote from "../AddNote";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-import AddNoteModal from "../AddNoteModal";
+import AddNote from "../AddNotes/AddNote";
+import AddNoteModal from "../AddNotes/AddNoteModal";
 
 const Navbar = () => {
   const [showAddNoteModal, setAddNoteShowModal] = useState(false);

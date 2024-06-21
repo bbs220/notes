@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import LoadingIndicator from "../LoadingIndicator";
+import LoadingIndicator from "../LoadingSpinner/LoadingIndicator";
 import axios from "axios";
 import Notes from "./Notes";
-import { BiSolidErrorAlt } from "react-icons/bi";
-import Background from "../Background";
+import Background from "../Background/Background";
+import ServerError from "../Background/ServerError";
 
 const Gridbox = () => {
   const [notes, setNotes] = useState([]);
@@ -38,17 +38,7 @@ const Gridbox = () => {
   }
 
   if (hasError) {
-    return (
-      <div className="w-full flex justify-center items-center">
-        <div className="p-4 w-1/2 h-96 rounded-2xl bg-error flex flex-col gap-y-2 justify-center items-center">
-          <div className="flex items-center justify-center gap-x-4">
-            <BiSolidErrorAlt className="text-3xl" />
-            <p className="font-bold text-3xl">An error occurred</p>
-          </div>
-          <p className="text-2xl">Please try again later.</p>
-        </div>
-      </div>
-    );
+    return <ServerError />;
   }
 
   return (

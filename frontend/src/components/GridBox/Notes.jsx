@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import EditNote from "../EditNote";
-import DeleteNote from "../DeleteNote";
-import EditNoteModal from "../EditNoteModal";
+import { getTime } from "../utils/getTime.js";
+import DeleteNote from "../DeleteNotes/DeleteNote.jsx";
+import EditNote from "../EditNotes/EditNote.jsx";
+import EditNoteModal from "../EditNotes/EditNoteModal.jsx";
 
 const Notes = ({ note }) => {
   const [showEditNoteModal, setShowEditNoteModal] = useState(false);
+
+  const createdTime = getTime(note.createdAt);
 
   return (
     <div className="min-w-full h-60 rounded-2xl shadow-sm lg:shadow-md border border-info">
@@ -18,6 +21,7 @@ const Notes = ({ note }) => {
         </div>
       </div>
       <div className="flex justify-end mr-4 items-center gap-x-4">
+        {createdTime}
         <EditNote onClick={() => setShowEditNoteModal(true)} />
         <DeleteNote noteId={note._id} />
       </div>

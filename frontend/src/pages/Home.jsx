@@ -1,7 +1,7 @@
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import Gridbox from "../components/GridBox/Gridbox";
 import Navbar from "../components/NavBar/Navbar";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchNotes/SearchBar";
 
 const Home = () => {
   return (
