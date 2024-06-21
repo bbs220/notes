@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { MdEdit } from "react-icons/md";
-import { MdDeleteOutline } from "react-icons/md";
+import EditNote from "../EditNote";
+import DeleteNote from "../DeleteNote";
 
 const Notes = ({ note }) => {
   return (
@@ -14,14 +14,8 @@ const Notes = ({ note }) => {
         </div>
       </div>
       <div className="flex justify-end mr-4 items-center gap-x-4">
-        <button className="btn btn-sm btn-accent">
-          <MdEdit className="text-2xl" />
-          <p className="hidden md:inline">Edit</p>
-        </button>
-        <button className="btn btn-sm btn-error">
-          <MdDeleteOutline className="text-2xl" />
-          <p className="hidden md:inline">Delete</p>
-        </button>
+        <EditNote />
+        <DeleteNote noteId={note._id} />
       </div>
     </div>
   );

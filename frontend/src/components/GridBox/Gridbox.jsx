@@ -3,6 +3,7 @@ import LoadingIndicator from "../LoadingIndicator";
 import axios from "axios";
 import Notes from "./Notes";
 import { BiSolidErrorAlt } from "react-icons/bi";
+import Background from "../Background";
 
 const Gridbox = () => {
   const [notes, setNotes] = useState([]);
@@ -39,7 +40,7 @@ const Gridbox = () => {
   if (hasError) {
     return (
       <div className="w-full flex justify-center items-center">
-        <div className="p-4 w-1/2 h-60 rounded-2xl bg-error flex flex-col gap-y-2 justify-center items-center">
+        <div className="p-4 w-1/2 h-96 rounded-2xl bg-error flex flex-col gap-y-2 justify-center items-center">
           <div className="flex items-center justify-center gap-x-4">
             <BiSolidErrorAlt className="text-3xl" />
             <p className="font-bold text-3xl">An error occurred</p>
@@ -51,10 +52,16 @@ const Gridbox = () => {
   }
 
   return (
-    <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
-      {notes.map((note) => (
-        <Notes key={note._id} note={note} />
-      ))}
+    <div className="w-full">
+      {notes?.length > 0 ? (
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+          {notes.map((note) => (
+            <Notes key={note._id} note={note} />
+          ))}
+        </div>
+      ) : (
+        <Background />
+      )}
     </div>
   );
 };
