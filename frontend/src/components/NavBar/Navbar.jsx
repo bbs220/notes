@@ -1,10 +1,10 @@
 import { useState } from "react";
 import AddNote from "../AddNote";
-import Modal from "../Modal";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import AddNoteModal from "../AddNoteModal";
 
 const Navbar = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showAddNoteModal, setAddNoteShowModal] = useState(false);
 
   return (
     <div>
@@ -21,13 +21,15 @@ const Navbar = () => {
           </a>
         </div>
         <div className="mr-4">
-          <AddNote onClick={() => setShowModal(true)} />
+          <AddNote onClick={() => setAddNoteShowModal(true)} />
         </div>
         <div className="flex-none">
           <ThemeToggle />
         </div>
       </div>
-      {showModal && <Modal onClose={() => setShowModal(false)} />}
+      {showAddNoteModal && (
+        <AddNoteModal onClose={() => setAddNoteShowModal(false)} />
+      )}
     </div>
   );
 };

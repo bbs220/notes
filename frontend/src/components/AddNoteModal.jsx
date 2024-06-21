@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaRegSave } from "react-icons/fa";
 
-const Modal = ({ onClose }) => {
+const AddNoteModal = ({ onClose }) => {
   const [title, setTitle] = useState("");
 
   const [content, setContent] = useState("");
@@ -78,4 +78,4 @@ const Modal = ({ onClose }) => {
   );
 };
 
-export default Modal;
+export default AddNoteModal;

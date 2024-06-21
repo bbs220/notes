@@ -5,7 +5,7 @@ import DeleteNote from "../DeleteNote";
 import EditNoteModal from "../EditNoteModal";
 
 const Notes = ({ note }) => {
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showEditNoteModal, setShowEditNoteModal] = useState(false);
 
   return (
     <div className="min-w-full h-60 rounded-2xl shadow-sm lg:shadow-md border border-info">
@@ -18,11 +18,11 @@ const Notes = ({ note }) => {
         </div>
       </div>
       <div className="flex justify-end mr-4 items-center gap-x-4">
-        <EditNote onClick={() => setShowEditModal(true)} />
+        <EditNote onClick={() => setShowEditNoteModal(true)} />
         <DeleteNote noteId={note._id} />
       </div>
-      {showEditModal && (
-        <EditNoteModal onClose={() => setShowEditModal(false)} />
+      {showEditNoteModal && (
+        <EditNoteModal onClose={() => setShowEditNoteModal(false)} />
       )}
     </div>
   );
