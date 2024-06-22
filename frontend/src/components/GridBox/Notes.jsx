@@ -20,8 +20,8 @@ const Notes = ({ note }) => {
           <p className="label-text text-pretty">{note.content}</p>
         </div>
       </div>
-      <div className="flex justify-end mr-4 items-center gap-x-4">
-        {createdTime}
+      <div className="flex justify-end mr-4 items-center gap-x-4 overflow-hidden">
+        <div className="text-xs text-balance ml-4 italic">{`Created at : ${createdTime}`}</div>
         <EditNote onClick={() => setShowEditNoteModal(true)} />
         <DeleteNote noteId={note._id} />
       </div>

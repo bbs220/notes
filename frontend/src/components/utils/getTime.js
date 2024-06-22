@@ -34,7 +34,7 @@ export function getTime(dateString) {
     ordinalSuffix = daySuffix;
   }
 
-  const formattedDateString = `Created at : ${day}${ordinalSuffix} ${monthName}, ${year}`;
+  const formattedDateString = `${day}${ordinalSuffix} ${monthName}, ${year}`;
 
   return formattedDateString;
 }
