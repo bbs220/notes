@@ -11,17 +11,17 @@ const Notes = ({ note }) => {
   const createdTime = getTime(note.createdAt);
 
   return (
-    <div className="min-w-full h-60 rounded-2xl shadow-sm lg:shadow-md border border-info">
-      <div className="flex justify-center items-center flex-col p-4 gap-y-4">
-        <div className="w-full h-full">
-          <h1 className="card-title">{note.title}</h1>
+    <div className="border border-info rounded-xl p-2 md:p4">
+      <div className="">
+        <div className="w-full">
+          <h1 className="card-title text-2xl">{note.title}</h1>
         </div>
-        <div className="w-full h-[7.2rem]">
+        <div className=" w-full">
           <p className="label-text text-pretty">{note.content}</p>
         </div>
       </div>
-      <div className="flex justify-end mr-4 items-center gap-x-4 overflow-hidden">
-        <div className="text-xs text-balance ml-4 italic">{`Created at : ${createdTime}`}</div>
+      <div className="flex justify-end items-center overflow-hidden">
+        <div className="text-xs text-balance italic">{`Created at : ${createdTime}`}</div>
         <EditNote onClick={() => setShowEditNoteModal(true)} />
         <DeleteNote noteId={note._id} />
       </div>

@@ -33,16 +33,16 @@ const Gridbox = () => {
     fetchNotes();
   }, []);
 
-  if (isLoading) {
-    return <LoadingIndicator />;
-  }
-
   if (hasError) {
     return <ServerError />;
   }
 
+  if (isLoading) {
+    return <LoadingIndicator />;
+  }
+
   return (
-    <div className="w-full h-96">
+    <div className="w-full lg:h-96 max-h-fit">
       {notes?.length > 0 ? (
         <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
           {notes.map((note) => (
