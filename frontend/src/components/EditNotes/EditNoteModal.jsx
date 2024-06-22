@@ -1,9 +1,48 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import { MdEditDocument } from "react-icons/md";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
-const EditNoteModal = ({ onClose }) => {
+const EditNoteModal = ({ onClose, noteId }) => {
+  const [note, setNote] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/notes/${noteId}`);
+        setNote(response.data);
+      } catch (error) {
+        console.error("Failed to fetch note:", error);
+      }
+    };
+
+    fetchData();
+  }, [noteId]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const updatedResponse = await axios.put(`/api/notes/${noteId}`, note);
+
+      if (!noteId) {
+        toast.error("Note not found");
+        return;
+      }
+
+      if (updatedResponse) {
+        toast.success("Note updated successfully");
+
+        // console.log("Note updated successfully:", updatedResponse.data);
+
+        onClose();
+      }
+    } catch (error) {
+      console.error("Failed to update note:", error);
+
+      toast.error("Could not edit the note");
+    }
   };
 
   return (
@@ -17,13 +56,17 @@ const EditNoteModal = ({ onClose }) => {
       >
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col justify-center items-center gap-y-4"
+          className="flex justify-center items-center flex-col gap-y-4"
         >
           <input
+            value={note?.title}
+            onChange={(e) => setNote({ ...note, title: e.target.value })}
             placeholder="Title"
             className="input input-bordered input-info w-full"
           />
           <textarea
+            value={note?.content}
+            onChange={(e) => setNote({ ...note, content: e.target.value })}
             className="textarea textarea-bordered textarea-info resize-none w-full h-60"
             placeholder="content"
           ></textarea>

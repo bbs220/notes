@@ -26,7 +26,10 @@ const Notes = ({ note }) => {
         <DeleteNote noteId={note._id} />
       </div>
       {showEditNoteModal && (
-        <EditNoteModal onClose={() => setShowEditNoteModal(false)} />
+        <EditNoteModal
+          noteId={note._id}
+          onClose={() => setShowEditNoteModal(false)}
+        />
       )}
     </div>
   );
