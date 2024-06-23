@@ -4,12 +4,10 @@ import { GiAbstract051 } from "react-icons/gi";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between w-full h-10 items-center p-4 flex-col md:flex-row gap-y-8">
+    <footer className="footer items-center p-1 md:p-2 flex justify-between w-full flex-col md:flex-row gap-y-8">
       <aside className="items-center grid-flow-col">
-        <div className="flex gap-x-4 justify-center items-center text-center">
-          <GiAbstract051 className="size-6 lg:size-8" />
-          <p>Developed by bbs220</p>
-        </div>
+        <GiAbstract051 className="size-6 lg:size-8" />
+        <p>Developed by bbs220</p>
       </aside>
       <nav className="flex justify-center items-center gap-x-8">
         <a
