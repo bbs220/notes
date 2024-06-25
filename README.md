@@ -2,6 +2,10 @@
 
 ## 📒  Made using the MERN stack 
 
+## 🔗 Site is live at [here](https://notes-7mia.onrender.com/)
+
+## ⚠️ Note: It make take up to 50 secs to load on the first visit since [Render](https://render.com/) does cold starts
+
 ## 📃 Instuctions for local use :
 - For installing all deps `npm install`
 - For running just the server `npm run server`

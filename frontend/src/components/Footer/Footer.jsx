@@ -11,14 +11,14 @@ const Footer = () => {
       </aside>
       <nav className="flex justify-center items-center gap-x-8">
         <a
-          href="#"
+          href="https://github.com/bbs220/notes"
           className="link flex justify-center items-center scale-125 hover:text-slate-500 gap-1 mb-4 md:mb-0"
         >
           <FaGithub className="text-xl" />
           <span className="hidden md:inline label">GitHub</span>
         </a>
         <a
-          href="#"
+          href="https://www.linkedin.com/in/buddhabhushan-sawant-41bb15241/"
           className="link flex justify-center items-center scale-125 hover:text-slate-500 gap-1 mb-4 md:mb-0"
         >
           <FaLinkedin className="text-xl" />
