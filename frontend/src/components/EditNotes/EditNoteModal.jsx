@@ -7,8 +7,8 @@ import { useNotes } from "../../context/NotesContext";
 
 const EditNoteModal = ({ onClose, noteId }) => {
   const { refetchNotes } = useNotes();
-  
-  const [note, setNote] = useState(null);
+
+  const [note, setNote] = useState({ title: "", content: "" });
 
   useEffect(() => {
     const fetchData = async () => {
