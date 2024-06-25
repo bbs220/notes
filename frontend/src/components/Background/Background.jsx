@@ -2,7 +2,7 @@ const Background = () => {
   return (
     <div className="w-full min-h-[30rem] flex flex-col justify-center items-center bg-base-100 rounded-2xl gap-y-4">
       <img
-        src="./resources/post-it.webp"
+        src="https://raw.githubusercontent.com/bbs220/notes/main/frontend/resources/post-it.webp"
         alt="notes background"
         className="size-20 md:size-32"
         draggable={false}

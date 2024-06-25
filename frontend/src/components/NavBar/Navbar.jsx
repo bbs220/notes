@@ -13,7 +13,7 @@ const Navbar = () => {
           <a className="label font-bold text-xl lg:text-3xl gap-2 lg:gap-4">
             <img
               className="size-6 lg:size-8"
-              src="./resources/notes.png"
+              src="https://raw.githubusercontent.com/bbs220/notes/main/frontend/resources/notes.png"
               alt="app icon"
               draggable={false}
             />
