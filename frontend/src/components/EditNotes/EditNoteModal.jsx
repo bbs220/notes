@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { MdEditDocument } from "react-icons/md";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { useNotes } from "../../context/NotesContext";
 
 const EditNoteModal = ({ onClose, noteId }) => {
+  const { refetchNotes } = useNotes();
+  
   const [note, setNote] = useState(null);
 
   useEffect(() => {
@@ -35,8 +38,8 @@ const EditNoteModal = ({ onClose, noteId }) => {
         toast.success("Note updated successfully");
 
         // console.log("Note updated successfully:", updatedResponse.data);
-
         onClose();
+        refetchNotes();
       }
     } catch (error) {
       console.error("Failed to update note:", error);

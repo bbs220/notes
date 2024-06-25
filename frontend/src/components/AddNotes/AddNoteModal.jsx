@@ -3,8 +3,11 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaRegSave } from "react-icons/fa";
+import { useNotes } from "../../context/NotesContext";
 
 const AddNoteModal = ({ onClose }) => {
+  const { refetchNotes } = useNotes();
+  
   const [title, setTitle] = useState("");
 
   const [content, setContent] = useState("");
@@ -24,8 +27,8 @@ const AddNoteModal = ({ onClose }) => {
         toast.success("Note created successfully!");
 
         // console.log(response.data);
-
         onClose();
+        refetchNotes();
       } else {
         toast.error("Failed to create note.");
       }

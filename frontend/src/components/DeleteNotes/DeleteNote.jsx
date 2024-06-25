@@ -2,8 +2,11 @@
 import { MdDeleteOutline } from "react-icons/md";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { useNotes } from "../../context/NotesContext";
 
 const DeleteNote = ({ noteId }) => {
+  const { refetchNotes } = useNotes();
+
   const handleDeleteClick = async () => {
     try {
       if (!noteId) {
@@ -15,6 +18,7 @@ const DeleteNote = ({ noteId }) => {
         await axios.delete(`/api/notes/${noteId}`);
 
         toast.success("Note deleted successfully");
+        refetchNotes();
       }
     } catch (error) {
       console.error("Failed to delete note:", error);
