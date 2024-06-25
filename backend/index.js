@@ -1,9 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 import connectToDB from "./database/connectToDatabase.js";
 import router from "./routes/notesRoutes.js";
 dotenv.config();
+
+const __dirname = path.resolve();
 
 // local port
 const PORT = process.env.PORT || 5000;
@@ -16,6 +19,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:5173",
+    methods: ["GET", "PUT", "DELETE", "POST"],
   })
 );
 

@@ -14,9 +14,12 @@ const EditNoteModal = ({ onClose, noteId }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/api/notes/${noteId}`);
+
         setNote(response.data);
       } catch (error) {
-        console.error("Failed to fetch note:", error);
+        // console.error("Failed to fetch note:", error);
+
+        toast.error("Failed to get the note");
       }
     };
 
@@ -42,7 +45,7 @@ const EditNoteModal = ({ onClose, noteId }) => {
         refetchNotes();
       }
     } catch (error) {
-      console.error("Failed to update note:", error);
+      // console.error("Failed to update note:", error);
 
       toast.error("Could not edit the note");
     }

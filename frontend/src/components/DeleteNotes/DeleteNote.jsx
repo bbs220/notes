@@ -21,7 +21,7 @@ const DeleteNote = ({ noteId }) => {
         refetchNotes();
       }
     } catch (error) {
-      console.error("Failed to delete note:", error);
+      // console.error("Failed to delete note:", error);
 
       toast.error("Failed to delete the note");
     }

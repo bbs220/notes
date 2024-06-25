@@ -8,7 +8,7 @@ export const createNote = async (req, res) => {
 
   try {
     if (!title || !content) {
-      console.log("Need both title and content for creating a note");
+      // console.log("Need both title and content for creating a note");
       return res.status(400).json({
         message: "Need both title and content for creating a note",
       });
@@ -22,7 +22,7 @@ export const createNote = async (req, res) => {
     if (newNote) {
       const note = await notesModel.create(newNote);
 
-      console.log("New note created");
+      // console.log("New note created");
 
       return res.status(200).json(note);
     }
@@ -39,12 +39,12 @@ export const getAllNotes = async (req, res) => {
     const allNotes = await notesModel.find({});
 
     if (allNotes.length === 0) {
-      console.log("There are no Notes in the db");
+      // console.log("There are no Notes in the db");
       return res.status(200).json({ message: "There are no Notes here" });
     }
 
     if (allNotes) {
-      console.log("Heres all the notes");
+      // console.log("Heres all the notes");
 
       return res.status(200).json({
         count: allNotes.length,
@@ -66,12 +66,12 @@ export const getNoteWithId = async (req, res) => {
     const noteId = await notesModel.findById(id);
 
     if (!noteId) {
-      console.log("Note not found with id");
+      // console.log("Note not found with id");
       return res.status(404).json({ message: "Note not found" });
     }
 
     if (noteId) {
-      console.log("Found the Note");
+      // console.log("Found the Note");
 
       return res.status(200).json(noteId);
     }
@@ -90,12 +90,12 @@ export const updateNoteWithId = async (req, res) => {
     const resultUpdate = await notesModel.findByIdAndUpdate(id, req.body);
 
     if (!resultUpdate) {
-      console.log("Note not found for updating");
+      // console.log("Note not found for updating");
       res.status(404).json({ message: "Note not found" });
     }
 
     if (resultUpdate) {
-      console.log("Note updated successfully");
+      // console.log("Note updated successfully");
 
       return res.status(200).json({ message: "Note updated successfully" });
     }
@@ -114,12 +114,12 @@ export const deleteNoteWithId = async (req, res) => {
     const resultDelete = await notesModel.findByIdAndDelete(id);
 
     if (!resultDelete) {
-      console.log("Note not found for deletion");
+      // console.log("Note not found for deletion");
       return res.status(404).json({ message: "Note not found" });
     }
 
     if (resultDelete) {
-      console.log("Note deleted successfully");
+      // console.log("Note deleted successfully");
 
       return res.status(200).json({ message: "Note deleted successfully" });
     }
@@ -136,14 +136,14 @@ export const searchNotes = async (req, res) => {
     const { title } = req.query;
 
     if (!title) {
-      console.log("Need a title for searching notes");
+      // console.log("Need a title for searching notes");
       return res
         .status(400)
         .json({ message: "Need a title for searching notes" });
     }
 
     if (title.length < 3) {
-      console.log("Title must be at least 3 characters");
+      // console.log("Title must be at least 3 characters");
       return res
         .status(400)
         .json({ message: "Title must be at least 3 characters" });
