@@ -2,6 +2,8 @@
 
 ## 📒  Made using the MERN stack 
 
+## 👋 Made by Buddhabhushan Sawant 
+
 ## 🔗 Site is live at [here](https://notes-7mia.onrender.com/)
 
 ## ⚠️ Note: It make take up to 50 secs to load on the first visit since [Render](https://render.com/) does cold starts
