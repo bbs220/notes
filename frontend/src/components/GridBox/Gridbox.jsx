@@ -16,7 +16,7 @@ const Gridbox = () => {
   }
 
   return (
-    <div className="w-full min-h-96">
+    <div className="w-full min-h-[30rem]">
       {notes?.length > 0 ? (
         <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center h-fit">
           {notes.map((note) => (
